@@ -8,7 +8,7 @@ from dcgan import DCGAN
 from utils import *
 
 FLAGS = tf.app.flags.FLAGS
-tf.app.flags.DEFINE_string('data_dir',      '/kaggle/working/ImageCompletion-DCGAN/data',                  """Path to tfrecords data directory""")
+tf.app.flags.DEFINE_string('data_dir',      '/kaggle/working/ImageCompletion-DCGAN/data/indian_celebs',                  """Path to tfrecords data directory""")
 tf.app.flags.DEFINE_string('logs_dir',       '/kaggle/working/ImageCompletion-DCGAN/logs',           """Path to write logs and checkpoints""")
 tf.app.flags.DEFINE_string('images_dir',    '/kaggle/working/ImageCompletion-DCGAN/images',                """Path to save generated images""")
 tf.app.flags.DEFINE_string('complete_src',  '/kaggle/working/ImageCompletion-DCGAN/complete_src',          """Path to images for completion""")
