@@ -70,13 +70,13 @@ def main(_):
 
     g_saver = tf.train.Saver(dcgan.g.variables, max_to_keep=15)
     d_saver = tf.train.Saver(dcgan.d.variables, max_to_keep=15)
-    g_checkpoint_path = os.path.join(FLAGS.log_dir, 'g.ckpt')
-    d_checkpoint_path = os.path.join(FLAGS.log_dir, 'd.ckpt')
-    g_checkpoint_restore_path = os.path.join(FLAGS.log_dir, 'g.ckpt-'+str(FLAGS.latest_ckpt))
-    d_checkpoint_restore_path = os.path.join(FLAGS.log_dir, 'd.ckpt-'+str(FLAGS.latest_ckpt))
+    g_checkpoint_path = os.path.join(FLAGS.logs_dir, 'g.ckpt')
+    d_checkpoint_path = os.path.join(FLAGS.logs_dir, 'd.ckpt')
+    g_checkpoint_restore_path = os.path.join(FLAGS.logs_dir, 'g.ckpt-'+str(FLAGS.latest_ckpt))
+    d_checkpoint_restore_path = os.path.join(FLAGS.logs_dir, 'd.ckpt-'+str(FLAGS.latest_ckpt))
 
     with tf.Session() as sess:
-        summary_writer = tf.summary.FileWriter(FLAGS.log_dir, graph=sess.graph)
+        summary_writer = tf.summary.FileWriter(FLAGS.logs_dir, graph=sess.graph)
 
         sess.run(tf.global_variables_initializer())
         # restore or initialize generator
