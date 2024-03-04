@@ -87,7 +87,7 @@ class DCGAN:
         self.G = self.g(self.zhat, training=True)
 
         self.contextual_loss = tf.reduce_sum(
-            tf.contrib.layers.flatten(
+            tf.layers.Flatten(
                 tf.square(tf.multiply(self.mask, self.G) - tf.multiply(self.mask, self.image))), 1)
         self.adversarial_loss = self.d(self.G, training=False)
         self.complete_loss = (0.999)*self.contextual_loss + (0.001)*self.adversarial_loss
