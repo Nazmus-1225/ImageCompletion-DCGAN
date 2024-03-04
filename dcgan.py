@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 class Generator:
     def __init__(self, depths=[1024, 512, 256, 128], s_size=4, nb_channels=3):
