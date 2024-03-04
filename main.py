@@ -8,11 +8,11 @@ from dcgan import DCGAN
 from utils import *
 
 FLAGS = tf.app.flags.FLAGS
-tf.app.flags.DEFINE_string('data_dir',      'data',                  """Path to tfrecords data directory""")
-tf.app.flags.DEFINE_string('log_dir',       'checkpoints',           """Path to write logs and checkpoints""")
-tf.app.flags.DEFINE_string('images_dir',    'images',                """Path to save generated images""")
-tf.app.flags.DEFINE_string('complete_src',  'complete_src',          """Path to images for completion""")
-tf.app.flags.DEFINE_string('complete_dir',  'complete',              """Path to save completed images""")
+tf.app.flags.DEFINE_string('data_dir',      '/kaggle/working/ImageCompletion-DCGAN/data',                  """Path to tfrecords data directory""")
+tf.app.flags.DEFINE_string('logs_dir',       '/kaggle/working/ImageCompletion-DCGAN/logs',           """Path to write logs and checkpoints""")
+tf.app.flags.DEFINE_string('images_dir',    '/kaggle/working/ImageCompletion-DCGAN/images',                """Path to save generated images""")
+tf.app.flags.DEFINE_string('complete_src',  '/kaggle/working/ImageCompletion-DCGAN/complete_src',          """Path to images for completion""")
+tf.app.flags.DEFINE_string('complete_dir',  '/kaggle/working/ImageCompletion-DCGAN/complete',              """Path to save completed images""")
 tf.app.flags.DEFINE_string('masktype',      'center',                """Mask types: center, random""")
 tf.app.flags.DEFINE_integer('max_itr',      100001,                  """Maximum number of iterations""")
 tf.app.flags.DEFINE_integer('batch_size',   128,                     """Batch size""")
@@ -96,8 +96,8 @@ def main(_):
             # setup for monitoring
             if not os.path.exists(FLAGS.images_dir):
                 os.makedirs(FLAGS.images_dir)
-            if not os.path.exists(FLAGS.log_dir):
-                os.makedirs(FLAGS.log_dir)
+            if not os.path.exists(FLAGS.logs_dir):
+                os.makedirs(FLAGS.logs_dir)
 
             sample_z = sess.run(tf.random_uniform([dcgan.batch_size, dcgan.z_dim], minval=-1.0, maxval=1.0))
             images = dcgan.sample_images(5, 5, inputs=sample_z)
