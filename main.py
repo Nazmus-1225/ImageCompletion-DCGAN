@@ -26,7 +26,7 @@ CROP_IMAGE_SIZE = 96
 
 def read_decode(data_dir, batch_size, s_size):
     files = [os.path.join(data_dir, f) for f in os.listdir(data_dir) if f.endswith('.tfrecords')]
-    print(files)
+    print(data_dir)
     fqueue = tf.train.string_input_producer(files)
     reader = tf.TFRecordReader()
     _, serialized = reader.read(fqueue)
