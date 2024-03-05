@@ -161,7 +161,7 @@ def main(_):
 
                 for idx in range(len(originals)):
                     image_src = get_image(originals[idx], dcgan.image_size, nb_channels=FLAGS.nb_channels)
-                    image_src=imread(originals[idx])
+                    image_src=imread(originals[idx],nb_channels=FLAGS.nb_channels)
                     if FLAGS.nb_channels == 3:
                         image = np.expand_dims(image_src, axis=0)
                     elif FLAGS.nb_channels == 1:
