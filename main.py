@@ -168,10 +168,8 @@ def main(_):
 
                     # Save original image (y)
                     filename = os.path.join(FLAGS.complete_dir, 'original_image_{:02d}.jpg'.format(idx))
-                    print(image_src.shape)
-                    print(image_src.dtype)
-                    print(image_src)
-                    imsave(image_src, filename)
+                    image_src1=(image_src*255).astype(np.uint8)
+                    imsave(image_src1, filename)
 
                     # Save corrupted image (y . M)
                     filename = os.path.join(FLAGS.complete_dir, 'corrupted_image_{:02d}.jpg'.format(idx))
