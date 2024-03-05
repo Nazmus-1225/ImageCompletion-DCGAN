@@ -175,7 +175,8 @@ def main(_):
                     filename = os.path.join(FLAGS.complete_dir, 'corrupted_image_{:02d}.jpg'.format(idx))
                     if FLAGS.nb_channels == 3:
                         masked_image = np.multiply(image_src, mask)
-                        imsave(masked_image, filename)
+                        masked_image1=(masked_image*255).astype(np.uint8)
+                        imsave(masked_image1, filename)
                     elif FLAGS.nb_channels == 1:
                         masked_image = np.multiply(np.expand_dims(image_src, axis=3), mask)
                         imsave(masked_image[:, :, 0], filename)
