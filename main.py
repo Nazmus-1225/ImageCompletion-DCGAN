@@ -158,9 +158,8 @@ def main(_):
                 # Read actual images
                 originals = glob(os.path.join(FLAGS.complete_src, '*.jpg'))
                 batch_mask = np.expand_dims(mask, axis=0)
-                print(len(originals))
                 for idx in range(len(originals)):
-                    #print(idx)
+                    print(idx)
                     image_src = get_image(originals[idx], dcgan.image_size, nb_channels=FLAGS.nb_channels)
                     #image_src=imread(originals[idx],nb_channels=FLAGS.nb_channels)
                     if FLAGS.nb_channels == 3:
@@ -188,7 +187,7 @@ def main(_):
                     v = 0
                     momentum = 0.9
                     lr = 0.01
-                    #print(idx)
+                    print('cc')
 
                     for i in range(0, 1001):
                         fd = {dcgan.zhat: zhat, dcgan.mask: batch_mask, dcgan.image: image}
@@ -199,7 +198,9 @@ def main(_):
                         v = momentum*v - lr*g[0]
                         zhat += -momentum * v_prev + (1+momentum)*v
                         zhat = np.clip(zhat, -1, 1)
+                        print('bb')
                         if i % 100:
+                            print('aa')
                             print(i)
                         if i % 1000 == 0:
                             filename = os.path.join(FLAGS.complete_dir,
