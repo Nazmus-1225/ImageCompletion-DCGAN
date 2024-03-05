@@ -6,9 +6,9 @@ def get_image(image_path, image_size, nb_channels=3, is_crop=True):
 
 def imread(path, nb_channels):
     if nb_channels == 3:
-        return io.imread(path, mode='RGB').astype(float32)
+        return io.imread(path, mode='RGB').astype(float)
     elif nb_channels == 1:
-        return io.imread(path, mode='L').astype(float32)
+        return io.imread(path, mode='L').astype(float)
 
 def transformImg(image, npx=96, is_crop=True):
     # npx : # of pixels width/height of image
