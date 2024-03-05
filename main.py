@@ -187,6 +187,7 @@ def main(_):
                     v = 0
                     momentum = 0.9
                     lr = 0.01
+                    print(idx)
 
                     for i in range(0, 1001):
                         fd = {dcgan.zhat: zhat, dcgan.mask: batch_mask, dcgan.image: image}
@@ -197,7 +198,8 @@ def main(_):
                         v = momentum*v - lr*g[0]
                         zhat += -momentum * v_prev + (1+momentum)*v
                         zhat = np.clip(zhat, -1, 1)
-
+                        if i % 100:
+                            print(i)
                         if i % 1000 == 0:
                             filename = os.path.join(FLAGS.complete_dir,
                                 'hats_img_{:02d}_{:04d}.jpg'.format(idx, i))
