@@ -19,7 +19,7 @@ tf.app.flags.DEFINE_integer('batch_size',   128,                     """Batch si
 tf.app.flags.DEFINE_integer('latest_ckpt',  0,                       """Latest checkpoint timestamp to load""")
 tf.app.flags.DEFINE_integer('nb_channels',  3,                       """Number of color channels""")
 tf.app.flags.DEFINE_boolean('is_train',     False,                    """False for generating only""")
-tf.app.flags.DEFINE_boolean('is_complete',  False,                   """True for completion only""")
+tf.app.flags.DEFINE_boolean('is_complete',  True,                   """True for completion only""")
 tf.app.flags.DEFINE_integer('num_examples_per_epoch_for_train', 300, """number of examples for train""")
 
 CROP_IMAGE_SIZE = 96
