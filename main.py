@@ -158,9 +158,9 @@ def main(_):
                 # Read actual images
                 originals = glob(os.path.join(FLAGS.complete_src, '*.jpg'))
                 batch_mask = np.expand_dims(mask, axis=0)
-
+                print(len(originals))
                 for idx in range(len(originals)):
-                    print(idx)
+                    #print(idx)
                     image_src = get_image(originals[idx], dcgan.image_size, nb_channels=FLAGS.nb_channels)
                     #image_src=imread(originals[idx],nb_channels=FLAGS.nb_channels)
                     if FLAGS.nb_channels == 3:
