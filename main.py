@@ -156,7 +156,7 @@ def main(_):
                     mask[np.random.random(dcgan.image_shape[:2]) < fraction_masked] = 0.0
 
                 # Read actual images
-                originals = glob(os.path.join(FLAGS.complete_src, '731049a946dd9a52638e33b7015d360b.jpg'))
+                originals = glob(os.path.join(FLAGS.complete_src, 'original_image_008.jpg'))
                 print(len(originals))
                 batch_mask = np.expand_dims(mask, axis=0)
                 for idx in range(len(originals)):
@@ -200,7 +200,7 @@ def main(_):
                         zhat = np.clip(zhat, -1, 1)
                         if i % 100 == 0:
                             print(i)
-                        if i % 1000 == 0:
+                        if i % 100 == 0:
                             filename = os.path.join(FLAGS.complete_dir,
                                 'hats_img_{:02d}_{:04d}.jpg'.format(idx, i))
                             if FLAGS.nb_channels == 3:
