@@ -30,6 +30,7 @@ def center_crop(x, crop_h, crop_w=None, resize_w=96):
     return transform.resize(x[j:j+crop_h, i:i+crop_w], [resize_w, resize_w])
 
 def imsave(image, path):
+    image=(image*255).astype(np.uint8)
     return io.imsave(path, image)
 
 def save_images(images, image_path):
