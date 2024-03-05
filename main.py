@@ -161,7 +161,7 @@ def main(_):
 
                 for idx in range(len(originals)):
                     image_src = get_image(originals[idx], dcgan.image_size, nb_channels=FLAGS.nb_channels)
-                    image_src=imread(originals[idx],nb_channels=FLAGS.nb_channels)
+                    #image_src=imread(originals[idx],nb_channels=FLAGS.nb_channels)
                     if FLAGS.nb_channels == 3:
                         image = np.expand_dims(image_src, axis=0)
                     elif FLAGS.nb_channels == 1:
@@ -169,7 +169,7 @@ def main(_):
                     
                     # Save original image (y)
                     filename = os.path.join(FLAGS.complete_dir, 'original_image_{:02d}.jpg'.format(idx))
-                    image_src=(image_src/127.5)-1;
+                    #image_src=(image_src/127.5)-1;
                     image_src1=(image_src*255).astype(np.uint8)
                     imsave(image_src1, filename)
 
@@ -202,6 +202,9 @@ def main(_):
                             filename = os.path.join(FLAGS.complete_dir,
                                 'hats_img_{:02d}_{:04d}.jpg'.format(idx, i))
                             if FLAGS.nb_channels == 3:
+                                x=G_imgs[0,:,:,:]
+                                print(x.shape)
+                                print(x.dtype)
                                 save_images(G_imgs[0, :, :, :], filename)
                             if FLAGS.nb_channels == 1:
                                 save_images(G_imgs[0, :, :, 0], filename)
