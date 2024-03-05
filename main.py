@@ -170,15 +170,15 @@ def main(_):
                     # Save original image (y)
                     filename = os.path.join(FLAGS.complete_dir, 'original_image_{:02d}.jpg'.format(idx))
                     #image_src=(image_src/127.5)-1;
-                    image_src1=(image_src*255).astype(np.uint8)
-                    imsave(image_src1, filename)
+                    #image_src1=(image_src*255).astype(np.uint8)
+                    imsave(image_src, filename)
 
                     # Save corrupted image (y . M)
                     filename = os.path.join(FLAGS.complete_dir, 'corrupted_image_{:02d}.jpg'.format(idx))
                     if FLAGS.nb_channels == 3:
                         masked_image = np.multiply(image_src, mask)
-                        masked_image1=(masked_image*255).astype(np.uint8)
-                        imsave(masked_image1, filename)
+                        #masked_image1=(masked_image*255).astype(np.uint8)
+                        imsave(masked_image, filename)
                     elif FLAGS.nb_channels == 1:
                         masked_image = np.multiply(np.expand_dims(image_src, axis=3), mask)
                         imsave(masked_image[:, :, 0], filename)
