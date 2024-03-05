@@ -166,9 +166,10 @@ def main(_):
                         image = np.expand_dims(image_src, axis=0)
                     elif FLAGS.nb_channels == 1:
                         image = np.expand_dims(np.expand_dims(image_src, axis=3), axis=0)
-
+                    
                     # Save original image (y)
                     filename = os.path.join(FLAGS.complete_dir, 'original_image_{:02d}.jpg'.format(idx))
+                    image_src=(image_src/127.5)-1;
                     image_src1=(image_src*255).astype(np.uint8)
                     imsave(image_src1, filename)
 
