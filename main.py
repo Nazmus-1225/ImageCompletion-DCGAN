@@ -9,7 +9,7 @@ from utils import *
 
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_string('data_dir',      '/kaggle/working/ImageCompletion-DCGAN/data/indian_celebs',                  """Path to tfrecords data directory""")
-tf.app.flags.DEFINE_string('logs_dir',       '/kaggle/working/ImageCompletion-DCGAN/logs',           """Path to write logs and checkpoints""")
+tf.app.flags.DEFINE_string('logs_dir',       '/kaggle/input/face_inpainting/tensorflow2/epoch_50000/1',           """Path to write logs and checkpoints""")
 tf.app.flags.DEFINE_string('images_dir',    '/kaggle/working/ImageCompletion-DCGAN/images',                """Path to save generated images""")
 tf.app.flags.DEFINE_string('complete_src',  '/kaggle/working/ImageCompletion-DCGAN/complete_src',          """Path to images for completion""")
 tf.app.flags.DEFINE_string('complete_dir',  '/kaggle/working/ImageCompletion-DCGAN/complete',              """Path to save completed images""")
@@ -18,8 +18,8 @@ tf.app.flags.DEFINE_integer('max_itr',      100001,                  """Maximum 
 tf.app.flags.DEFINE_integer('batch_size',   128,                     """Batch size""")
 tf.app.flags.DEFINE_integer('latest_ckpt',  0,                       """Latest checkpoint timestamp to load""")
 tf.app.flags.DEFINE_integer('nb_channels',  3,                       """Number of color channels""")
-tf.app.flags.DEFINE_boolean('is_train',     True,                    """False for generating only""")
-tf.app.flags.DEFINE_boolean('is_complete',  False,                   """True for completion only""")
+tf.app.flags.DEFINE_boolean('is_train',     False,                    """False for generating only""")
+tf.app.flags.DEFINE_boolean('is_complete',  True,                   """True for completion only""")
 tf.app.flags.DEFINE_integer('num_examples_per_epoch_for_train', 300, """number of examples for train""")
 
 CROP_IMAGE_SIZE = 96
@@ -80,6 +80,7 @@ def main(_):
 
         sess.run(tf.global_variables_initializer())
         # restore or initialize generator
+        print(g_checkpoint_restore_path)
         if os.path.exists(g_checkpoint_restore_path+'.meta'):
             print('Restoring variables:')
             for v in dcgan.g.variables:
