@@ -198,13 +198,10 @@ def main(_):
                         zhat += -momentum * v_prev + (1+momentum)*v
                         zhat = np.clip(zhat, -1, 1)
 
-                        if i % 100 == 0:
+                        if i % 1000 == 0:
                             filename = os.path.join(FLAGS.complete_dir,
                                 'hats_img_{:02d}_{:04d}.jpg'.format(idx, i))
                             if FLAGS.nb_channels == 3:
-                                x=G_imgs[0,:,:,:]
-                                print(x.shape)
-                                print(x.dtype)
                                 save_images(G_imgs[0, :, :, :], filename)
                             if FLAGS.nb_channels == 1:
                                 save_images(G_imgs[0, :, :, 0], filename)
