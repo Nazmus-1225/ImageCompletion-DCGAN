@@ -156,7 +156,8 @@ def main(_):
                     mask[np.random.random(dcgan.image_shape[:2]) < fraction_masked] = 0.0
 
                 # Read actual images
-                originals = glob(os.path.join(FLAGS.complete_src, '*.jpg'))
+                originals = glob(os.path.join(FLAGS.complete_src, '731049a946dd9a52638e33b7015d360b.jpg'))
+                print(len(originals))
                 batch_mask = np.expand_dims(mask, axis=0)
                 for idx in range(len(originals)):
                     print(idx)
