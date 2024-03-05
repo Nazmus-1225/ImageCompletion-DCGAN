@@ -160,6 +160,7 @@ def main(_):
                 batch_mask = np.expand_dims(mask, axis=0)
 
                 for idx in range(len(originals)):
+                    print(idx)
                     image_src = get_image(originals[idx], dcgan.image_size, nb_channels=FLAGS.nb_channels)
                     #image_src=imread(originals[idx],nb_channels=FLAGS.nb_channels)
                     if FLAGS.nb_channels == 3:
@@ -187,7 +188,7 @@ def main(_):
                     v = 0
                     momentum = 0.9
                     lr = 0.01
-                    print(idx)
+                    #print(idx)
 
                     for i in range(0, 1001):
                         fd = {dcgan.zhat: zhat, dcgan.mask: batch_mask, dcgan.image: image}
